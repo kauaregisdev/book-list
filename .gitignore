@@ -1,0 +1,6 @@
+# ignora a pasta de ambiente virtual
+/venv
+
+# ignora o pycache
+/app/__pycache__
+/app/routers/__pycache__
