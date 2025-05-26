@@ -4,19 +4,21 @@ class TokenRequest(BaseModel):
     username: str
     password: str
 
-class BookBase(BaseModel):
+class BookCreate(BaseModel):
     title: str
     author: str
     year: int
 
-class BookCreate(BookBase):
-    pass
-
-class Book(BookBase):
+class Book(BaseModel):
     id: int
+    title: str
+    author: str
+    year: int
+    user_id: int
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        'from_attributes': True
+    }
 
 class UserCreate(BaseModel):
     username: str
@@ -26,5 +28,11 @@ class User(BaseModel):
     id: int
     username: str
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        'from_attributes': True
+    }
+
+class BookUpdate(BaseModel):
+    title: str
+    author: str
+    year: int

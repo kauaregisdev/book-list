@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.database import engine, Base
-from app.routers import users
+from app.routers import users, books
 
 app = FastAPI()
 
@@ -10,6 +10,7 @@ async def startup():
         await conn.run_sync(Base.metadata.create_all)
 
 app.include_router(users.router)
+app.include_router(books.router)
 
 @app.get('/')
 def read_root():
