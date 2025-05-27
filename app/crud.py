@@ -42,9 +42,9 @@ async def get_books(db: AsyncSession, skip: int = 0, limit: int = 10, user_id: i
     return False
 
 async def update_book(db: AsyncSession, db_book: models.Book, book: schemas.BookUpdate): # out of order
-    db_book.__dict__["title"] = book.title
-    db_book.__dict__["author"] = book.author
-    db_book.__dict__["year"] = book.year
+    db_book.title = book.title
+    db_book.author = book.author
+    db_book.year = book.year
     await db.commit()
     await db.refresh(db_book)
     return db_book
